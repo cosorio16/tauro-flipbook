@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import Cart from "./Cart";
 import useStore from "../global/store";
 function Header() {
-  const { page, updatePage, limit } = useStore();
+  const { page, updatePage, limit, showCart, toggleShowCart } = useStore();
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
@@ -13,7 +14,8 @@ function Header() {
   }, [page]);
 
   return (
-    <header className=" w-full h-20 shadow flex items-center justify-between py-4 px-4 fixed z-50 bg-white">
+    <header className=" w-full h-20 shadow flex items-center justify-between py-4 px-4 fixed z-40 bg-white">
+      {showCart && <Cart></Cart>}
       <div className="flex gap-4 items-center">
         <button className="hover:scale-110 transition">
           <svg width="35" height="35" viewBox="0 0 24 24">
@@ -37,7 +39,10 @@ function Header() {
           />
           / {limit}
         </div>
-        <button className="hover:scale-110 transition">
+        <button
+          onClick={() => toggleShowCart()}
+          className="hover:scale-110 transition"
+        >
           <svg width="30" height="30" viewBox="0 0 32 32">
             <path
               fill="none"
@@ -50,10 +55,6 @@ function Header() {
           </svg>
         </button>
       </div>
-
-      {/* <div className="fixed w-screen h-screen bg-white bottom-0 left-0 backdrop-blur bg-opacity-50 p-4">
-      <h1 className="text-4xl font-medium uppercase text-center">Tauro</h1>
-      </div> */}
     </header>
   );
 }

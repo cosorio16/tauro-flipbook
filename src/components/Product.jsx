@@ -2,12 +2,19 @@ import Header from "./Header";
 import { useState, useEffect } from "react";
 import useStore from "../global/store";
 
-
 function Product({ image, breadcrumb, title, stock, code, link, price }) {
-  const { toggleShowProduct, page, updatePage } = useStore();
+  const { toggleShowProduct, page, updatePage, addToCart, cart } = useStore();
   const [quantity, setQuantity] = useState(1);
 
-  const handleUpdateCart = () => {};
+  const handleAddToCart = () => {
+    addToCart({
+      image,
+      title,
+      quantity,
+      price,
+    });
+  };
+  console.log(cart)
 
   useEffect(() => {
     updatePage(page);
@@ -31,7 +38,7 @@ function Product({ image, breadcrumb, title, stock, code, link, price }) {
         <img
           src={image}
           alt=""
-          className="w-1/2 rounded aspect-auto object-cover mix-blend-multiply"
+          className="w-1/2 rounded aspect-auto object-cover mix-blend-multiply max-w-72"
         />
         <div className="text-start flex flex-col gap-2">
           <h1 className="font-medium text-sm tracking-wide text-gray-600 flex items-center gap-2">
@@ -80,7 +87,10 @@ function Product({ image, breadcrumb, title, stock, code, link, price }) {
               Eliminar
             </button>
           </div>
-          <button className="bg-gray-800 hover:scale-105 transition-all text-white text-base font-medium px-4 py-2 rounded ">
+          <button
+            onClick={() => handleAddToCart()}
+            className="bg-gray-800 hover:scale-105 transition-all text-white text-base font-medium px-4 py-2 rounded "
+          >
             Añadir al carrito
           </button>
           <a

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Aside from "./components/Aside";
 import Product from "./components/Product";
+import Cart from "./components/Cart";
 import useStore from "./global/store";
 import Flipbook from "./components/Flipbook";
 import { Swiper, SwiperSlide } from "swiper/react";

@@ -11,7 +11,7 @@ function Flipbook({ images, topic, products, onClick }) {
   };
 
   return (
-    <div className="p-2 flex flex-col w-[400px] m-auto border border-gray-300 rounded snap-center">
+    <div className="p-2 flex flex-col w-[400px] m-auto border border-gray-300 rounded snap-center h-[700px]">
       <header className="h-10 bg-gray-100 flex items-end justify-end p-2 text-gray-500 border border-b-gray-300">
         <h1 className="font-medium text-xs">{topic}</h1>
       </header>
