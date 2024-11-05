@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  user-select: none;
+}
+
+.buttonav {
+  position: relative;
+  padding-left: 40px;
+}
+
+.buttonav:hover {
+  color: white;
+}
+
+.buttonav::before {
+  content: " ";
+  width: 10%;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  background: #000;
+  z-index: -1;
+  transition: all 0.222s ease-in-out;
+}
+
+.buttonav:hover:before {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  background: #000;
+  z-index: -1;
+}
+
+.productconteiner:hover button {
+  opacity: 1;
+}
+
+.shopbutton {
+  opacity: 30%;
+  transition: all 0.323s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.snap-mandatory {
+  scroll-snap-type: y mandatory;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
