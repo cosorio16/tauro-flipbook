@@ -19,6 +19,7 @@ function Flipbook({ images, topic, products, onClick }) {
         {images.map((i, index) => (
           <div className="relative productconteiner" key={index}>
             <img
+              loading="lazy"
               src={i}
               alt=""
               className=" aspect-square object-cover mix-blend-multiply"

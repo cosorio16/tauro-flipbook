@@ -18,7 +18,8 @@ function App() {
   const topics = [];
   const datas = [];
 
-  const { page, updatePage, updateLimit, showProduct, currentProduct } = useStore();
+  const { page, updatePage, updateLimit, showProduct, currentProduct } =
+    useStore();
   const [swipe, setSwipe] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(0);
 
@@ -46,7 +47,6 @@ function App() {
     datas.push(data);
   }
 
-
   useEffect(() => {
     swipe && swipe.slideTo(page, 1000);
   }, [page]);
@@ -62,7 +62,9 @@ function App() {
       <main className="flex h-full grow flex-col gap-4 mt-24 py-4">
         <Swiper
           className="w-fit grow max-h-[640px] h-fit"
+          lazyPreloadPrevNext={true}
           spaceBetween={50}
+          lazy={"true"}
           slidesPerView={1}
           direction="vertical"
           onSlideChange={(e) => {
@@ -81,6 +83,7 @@ function App() {
               <Flipbook
                 images={g}
                 key={index}
+                loading="lazy"
                 topic={topics[index]}
                 onClick={() => setSelectedProduct(index)}
               ></Flipbook>
@@ -88,16 +91,17 @@ function App() {
           ))}
         </Swiper>
       </main>
-      {showProduct && 
-      <Product
-      breadcrumb={datas[selectedProduct][currentProduct].topic}
-      code={datas[selectedProduct][currentProduct].sku}
-      link={datas[selectedProduct][currentProduct].product_page_url}
-      image={datas[selectedProduct][currentProduct].image}
-      price={datas[selectedProduct][currentProduct].regular_price}
-      stock={datas[selectedProduct][currentProduct].stock}
-      title={datas[selectedProduct][currentProduct].post_title}
-      ></Product>}
+      {showProduct && (
+        <Product
+          breadcrumb={datas[selectedProduct][currentProduct].topic}
+          code={datas[selectedProduct][currentProduct].sku}
+          link={datas[selectedProduct][currentProduct].product_page_url}
+          image={datas[selectedProduct][currentProduct].image}
+          price={datas[selectedProduct][currentProduct].regular_price}
+          stock={datas[selectedProduct][currentProduct].stock}
+          title={datas[selectedProduct][currentProduct].post_title}
+        ></Product>
+      )}
     </div>
   );
 }
